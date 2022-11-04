@@ -13,11 +13,11 @@ public class TestLaboratorioUsuario {
         //operacionCrudConUsuario.create(usuario1);
         
         // READ
-        List<Usuario> listadoDeUsuarios = operacionCrudConUsuario.findAll();
-        listadoDeUsuarios.forEach(usuario -> {
-            System.out.println( usuario );
-        });
-        
+//        List<Usuario> listadoDeUsuarios = operacionCrudConUsuario.findAll();
+//        listadoDeUsuarios.forEach(usuario -> {
+//            System.out.println( usuario );
+//        });
+//        
         // READ ONE
         //Usuario usuarioId = new Usuario( 2 );
         //Usuario usuarioEncontrado = operacionCrudConUsuario.findOne( usuarioId );
