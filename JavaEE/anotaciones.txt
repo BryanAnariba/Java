@@ -1,0 +1,55 @@
+------------------------ PARA JSP
+	PARA CONFIGURAR GLASSFISH DEBES VER EN LA SECCION 197 EL VIDEO 1 Y 2 PREFERIBLEMENTE EL VIDEO 198 "OJO GLASSFISH SOLO SOPORTA JDK 1.8"
+
+	ir a services/servers/Glassfish server -> click derecho y start
+
+	SI GENERA ESTE ERROR => Unable to load the mojo 'war' in the maven Due to an API incompatibility => debes ir al pom.xml 
+	<build>
+        	<plugins>
+            	<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version> ----------------------------------------> MIRA ESTE
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version> ---------------------------------> CAMBIA ESTE
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-api</artifactId>
+                                    <version>${jakartaee}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
