@@ -1,3 +1,0 @@
-glassflish => http://localhost:4848/common/index.jsf
-En la zona de 
-	Applications podras lanzar tu aplicacion
