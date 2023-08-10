@@ -19,6 +19,12 @@ public class Category {
         this.categoryStatus = categoryStatus;
     }
     
+    public Category ( int categoryId, String categoryName, boolean categoryStatus ) {
+        this.categoryName = categoryName;
+        this.categoryStatus = categoryStatus;
+        this.categoryId = categoryId;
+    }
+    
     public void setCategoryId ( int categoryId ) {
         this.categoryId = categoryId;
     }
