@@ -1,12 +1,34 @@
 package dto;
 
-public class ProductDTO {
+public class ProductDTO extends CategoryDTO {
     private int productId;
     private int categoryId;
     private String productName;
     private String productDescription;
     private double price;
     private int inStock;
+
+    public ProductDTO(int productId, int categoryId, String productName, String productDescription, double price, int inStock, String categoryName, boolean categoryStatus) {
+        super( categoryId, categoryName, categoryStatus );
+        this.productId = productId;
+        this.categoryId = categoryId;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.inStock = inStock;
+    }
+
+    public ProductDTO(int productId) {
+        this.productId = productId;
+    }
+
+    public ProductDTO(int categoryId, String productName, String productDescription, double price, int inStock) {
+        this.categoryId = categoryId;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.inStock = inStock;
+    }
 
     public int getProductId() {
         return productId;
@@ -58,7 +80,17 @@ public class ProductDTO {
 
     @Override
     public String toString() {
-        return "ProductDTO{" + "productId=" + productId + ", categoryId=" + categoryId + ", productName=" + productName + ", productDescription=" + productDescription + ", price=" + price + ", inStock=" + inStock + '}';
+        return (
+                "Product {" + 
+                "productId=" + productId + 
+                ", categoryId=" + categoryId + 
+                ", productName=" + productName + 
+                ", productDescription=" + productDescription + 
+                ", price=" + price + 
+                ", inStock=" + inStock + 
+                ", categoryName=" + this.getCategoryName() + 
+                ", categoryStatus=" + this.isCategoryStatus() + '}'
+        );
     }
 
 }

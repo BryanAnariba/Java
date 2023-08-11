@@ -1,5 +1,6 @@
 package data.categories;
 
+import data.DBConnection;
 import dto.CategoryDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
