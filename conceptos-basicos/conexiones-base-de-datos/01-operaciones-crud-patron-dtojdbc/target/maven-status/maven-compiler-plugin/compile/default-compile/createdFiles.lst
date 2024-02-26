@@ -1,8 +1,0 @@
-data\products\ProductDAO_JDBC.class
-dto\ProductDTO.class
-data\products\ProductDAO.class
-App.class
-data\DBConnection.class
-dto\CategoryDTO.class
-data\categories\CategoryDAO.class
-data\categories\CategoryDAO_JDBC.class

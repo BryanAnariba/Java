@@ -1,3 +1,0 @@
-JDBC: importante dar click en "clean and build" despues de modificar el pom.xml ya que instalara las dependencias
-	pom.xml => aqui van las dependencias de sql server ver el archivo para ver las dependencias
-	
