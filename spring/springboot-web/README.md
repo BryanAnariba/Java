@@ -13,4 +13,4 @@
 	__Spring Boot Devtools__
 	__Thymeleaf__
 
-- Todo paquete que crees en un proyecto al menos para empezar debe ser yendo a la parte de abajo de vscode, seleccionar JAVA PROJECTS src/main/java elegir lo que tenga {} y sobre el click derecho creando asi lo que desees, clases, interfaces, paquetes lo que quieras
+- Todo paquete que crees en un proyecto al menos para empezar debe ser yendo a la parte de abajo de vscode, seleccionar JAVA PROJECTS src/main/java elegir lo que tenga {} y sobre el click derecho creando asi lo que desees, clases, interfaces, paquetes lo que quieras.
