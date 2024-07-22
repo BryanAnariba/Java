@@ -23,10 +23,10 @@ public class functionsAndStrings {
     int numeroDos = 5;
     
     System.out.println(
-      "\nSuma: " + sumar(numeroUno, numeroDos) +
-      "\nResta: " + restar(numeroUno, numeroDos) +
-      "\nMultiplicacion: " + multiplicar(numeroUno, numeroDos) +
-      "\nDividir: " + dividir(numeroUno, numeroDos)
+      "\n\"Suma:\" " + sumar(numeroUno, numeroDos) +
+      "\n\"Resta:\" " + restar(numeroUno, numeroDos) +
+      "\n\"Multiplicacion:\" " + multiplicar(numeroUno, numeroDos) +
+      "\n\"Dividir:\" " + dividir(numeroUno, numeroDos)
     );
   }
 }

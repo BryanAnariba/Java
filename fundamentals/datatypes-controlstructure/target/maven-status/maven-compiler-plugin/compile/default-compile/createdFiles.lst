@@ -6,5 +6,6 @@ app\Arrays.class
 app\DoWhile.class
 app\For.class
 app\functionsAndStrings.class
+app\StringAndScanner.class
 app\While.class
 app\IfElse.class
