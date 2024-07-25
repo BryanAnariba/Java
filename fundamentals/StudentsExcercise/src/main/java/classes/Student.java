@@ -67,12 +67,12 @@ public class Student {
     this.account = inputKeyboard.nextLine();
     System.out.println((this.firstName != null) ? "Write the student first name ["+ this.firstName +"]: " : "Write the student first name: ");
     this.firstName = inputKeyboard.nextLine();
-    System.out.println("Write the student last name: ");
+    System.out.println((this.lastName != null) ? "Write the student last name ["+ this.lastName +"]: " : "Write the student last name: ");
     this.lastName = inputKeyboard.nextLine();
-    System.out.println("Write the student age: ");
+    System.out.println((this.age != 0) ? "Write the student age ["+ this.age +"]: " : "Write the student age: ");
     this.age = inputKeyboard.nextInt();
     inputKeyboard.nextLine();
-    System.out.println("Write the student carrer: ");
+    System.out.println((this.carrer != null) ? "Write the student carrer ["+ this.carrer +"]: " : "Write the student carrer: ");
     this.carrer = inputKeyboard.nextLine();
   }
 
