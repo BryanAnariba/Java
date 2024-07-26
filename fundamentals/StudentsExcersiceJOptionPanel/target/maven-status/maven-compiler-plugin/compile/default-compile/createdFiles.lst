@@ -1,2 +1,4 @@
-classes\main.class
+classes\App.class
+classes\Subject.class
+classes\Carrer.class
 classes\Student.class

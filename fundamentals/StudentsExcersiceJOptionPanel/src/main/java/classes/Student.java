@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Student {
@@ -7,18 +8,20 @@ public class Student {
   private String account;
   private String firstName;
   private String lastName;
-  private String carrer;
+  private Carrer carrer;
+  private ArrayList<Subject> subjects;
   
-  public Student () {}
-  
-  public Student (String account) {}
+  public Student () {
+    this.subjects = new ArrayList<Subject>();
+  }
 
-  public Student(String account, String firstName, String lastName, int age, String carrer) {
+  public Student(String account, String firstName, String lastName, int age, Carrer carrer) {
     this.account = account;
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
     this.carrer = carrer;
+    this.subjects = new ArrayList<Subject>();
   }
   
   public String getAccount() {
@@ -53,25 +56,31 @@ public class Student {
     this.age = age;
   }
 
-  public String getCarrer() {
+  public Carrer getCarrer() {
     return carrer;
   }
 
-  public void setCarrer(String carrer) {
+  public void setCarrer(Carrer carrer) {
     this.carrer = carrer;
   }
   
   public void addNewStudent () {
+    int selectedCarrer;
     System.out.println("===ADDING NEW STUDENT===");
     this.account = JOptionPane.showInputDialog("Write the student account: ", this.account);
     this.firstName = JOptionPane.showInputDialog("Write the student first name: ", this.firstName);
     this.lastName = JOptionPane.showInputDialog("Write the student last name: ", this.lastName);
     this.age = Integer.parseInt(JOptionPane.showInputDialog("Write the student age: ", this.age));
-    this.carrer = JOptionPane.showInputDialog("Write the student carrer: ", this.carrer);
+    selectedCarrer = Integer.parseInt(JOptionPane.showInputDialog("Write the student carrer: (0-" + (App.carrers.size() - 1) + ")"));
+    this.carrer = App.carrers.get(selectedCarrer);
+  }
+  
+   public void addSubject (Subject subject) {
+    subjects.add(subject);
   }
 
   @Override
   public String toString() {
-    return "Student{" + "account=" + account + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", carrer=" + carrer + '}';
+    return "Student{" + "account=" + account + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", carrer=" + carrer + ", subjects=" + subjects + '}';
   }
 }
