@@ -1,13 +1,13 @@
-package com.bs.webapp.spring_web_app;
+package com.fundamentals.fundamentals;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringWebAppApplication {
+public class FundamentalsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringWebAppApplication.class, args);
+		SpringApplication.run(FundamentalsApplication.class, args);
 	}
 
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details</title>
+</head>
+<body>
+  <ul>
+    <li th:text="${user.firstName}"></li>
+    <li th:text="${user.lastName}"></li>
+    <li th:text="${user.age}"></li>
+    <li th:text="${user.isActive}"></li>
+    <li th:if='${user.email != ""}' th:text="${user.email}"></li>
+    <li th:if='${not (user.email!="")}' th:text="${'no tiene email'}"></li>
+  </ul>
+</body>
+</html>
