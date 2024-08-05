@@ -16,7 +16,7 @@ public class ProductServiceImpl implements IProductService {
 
   // DI CON Autowired principio de holliwod, no nos llames nosotros lo haremos el mas usado gracias a Spring
   @Autowired()
-  @Qualifier("productRepositoryImpl") // Ay dos repos con esta interface pero con Qualifier seleccionas que repo quieres usar
+  @Qualifier("productRepositoryJson") // Ay dos repos con esta interface pero con Qualifier seleccionas que repo quieres usar
   private IProductRepository productRepository;
   @Autowired()
   private Environment environment;
