@@ -1,6 +1,7 @@
 package com.fundamentals.fundamentals.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fundamentals.fundamentals.dtos.ParamDto;
 import com.fundamentals.fundamentals.models.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 
 @RestController()
 @RequestMapping("/api/path-variable")
@@ -20,10 +24,24 @@ public class PathVariableController {
   
   @Value("${config.userName}")
   private String userName;
+
   @Value("${config.message}")
   private String message;
+
   @Value("${config.listOfValues}")
-  private String[] listOfValues;
+  private List<String> listOfValues;
+
+  @Value("#{${config.valuesMap}}")
+  private Map<String, Object> valuesMap;
+
+  @Value("#{${config.valuesMap}.product}")
+  private String product;
+
+  @Value("#{${config.valuesMap}.price}")
+  private Double price;
+
+  @Autowired()
+  private Environment environment;
 
   // http://localhost:3500/api/path-variable/baz/hi
   @GetMapping("/baz/{message}")
@@ -55,8 +73,12 @@ public class PathVariableController {
     Map<String, Object> jsonResponse = new HashMap<>();
     jsonResponse.put("defaultCode", defaultCode);
     jsonResponse.put("userName", this.userName);
-    jsonResponse.put("message", this.message);
+    jsonResponse.put("message", environment.getProperty("config.message"));
     jsonResponse.put("listOfValues", this.listOfValues);
+    jsonResponse.put("valuesMap", this.valuesMap);
+    jsonResponse.put("product", this.product);
+    jsonResponse.put("price", this.price);
     return jsonResponse;
   }
+  
 }

@@ -14,5 +14,16 @@
     <li th:if='${user.email != ""}' th:text="${user.email}"></li>
     <li th:if='${not (user.email!="")}' th:text="${'no tiene email'}"></li>
   </ul>
+
+  <a th:href="@{/users/list}">View All Users</a>
+  <br>
+  <a th:href="@{/api/params/foo?message=hello}">Go to foo</a>
+  <br>
+  <a th:href="@{/api/params/foo(message=hello)}">Go to foo 2</a>
+  <br>
+  <a th:href="@{/api/params/bar?text=hi&code=110}">Go to bar</a>
+  <br>
+  <a th:href="@{/api/params/request-with-servlet?text=hi&code=110}">Go to request with servlets</a>
+  
 </body>
 </html>

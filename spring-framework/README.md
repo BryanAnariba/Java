@@ -11,4 +11,7 @@
 
 ## Pasos Spring Initialzer: https://start.spring.io/
 
-
+## Generar el build de produccion como en node
+1. ./mvnw clean package
+2. Entrar a target con cd ./target
+3. Seleccionar el archivo .jar => java -jar ./nombre-proyecto-0.0.1-SNAPSHOT.jar
