@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hibernate.jpa.concepts.dtos.PersonDto;
 import com.hibernate.jpa.concepts.entities.Person;
 import com.hibernate.jpa.concepts.repositories.PersonRepository;
 
@@ -30,13 +31,17 @@ public class ConceptsApplication implements CommandLineRunner {
 		this.list();
 		this.findOne("03f56459-9a22-447d-ac2b-a38ebf348d45");
 		this.searchByFirstName("Name 5");
+		this.personalizedQuery();
+		this.personalizedQuery2();
+		this.personalizedQuery3DISTINCT();
 
+		
+		
 		// this.create();
 		// this.update();
 		// this.delete();
 		// this.delete2();
-
-		this.personalizedQueries();
+		// this.personalizedQueries();
 	}
 
 	@Transactional(readOnly = true)
@@ -165,4 +170,34 @@ public class ConceptsApplication implements CommandLineRunner {
 		inputKeyboardData.close();
 	}
 
+	@Transactional(readOnly = true)
+	public void personalizedQuery() {
+		System.out.println("Consulta por objeto persona y ademas lenguaje de programacion");
+		List<Object[]> personResult = this.personRepository.getAllMixPersonData();
+		personResult.forEach(p -> {
+			System.out.println("Programming Language: " + p[1] + " - " + p[0]);
+		});
+	}
+
+	@Transactional(readOnly = true)
+	public void personalizedQuery2 () {
+		List<Person> persons = this.personRepository.getPersonClassWith2Params();
+		persons.forEach(p -> System.out.println(p));
+
+		List<PersonDto> persons2 = this.personRepository.findAllPersonDto();
+		persons2.forEach(p -> System.out.println(p));
+	}
+
+	// ULTIMAS QUERIES JPQL
+	@Transactional(readOnly = true)
+	public void personalizedQuery3DISTINCT () {
+		List<String> persons = this.personRepository.findAllNames();
+		persons.forEach(p -> System.out.println(p));
+
+		List<String> personsDistinct = this.personRepository.findAllNameDistinct();
+		personsDistinct.forEach(p -> System.out.println(p));
+
+		Long totalCount = this.personRepository.findAllNameDistinctCount();
+		System.out.println("Total Count: " + totalCount);
+	}
 }

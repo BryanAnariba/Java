@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.hibernate.jpa.concepts.dtos.PersonDto;
 import com.hibernate.jpa.concepts.entities.Person;
 
 @Repository()
@@ -41,5 +42,24 @@ public interface PersonRepository extends CrudRepository <Person, String> {
 
   @Query("SELECT CONCAT(p.firstName, ' ', p.lastName) FROM Person p WHERE p.id = ?1")
   String getCompleteNameById(String id);
+
+  @Query("SELECT p, p.programmingLanguage FROM Person p")
+  List<Object[]> getAllMixPersonData();
+
+  @Query("SELECT new Person(p.firstName, p.lastName) FROM Person p")
+  List<Person> getPersonClassWith2Params();
+
+  @Query("SELECT new com.hibernate.jpa.concepts.dtos.PersonDto(p.firstName, p.lastName) FROM Person p")
+  List<PersonDto> findAllPersonDto();
+
+  // AQUI VIENEN LAS ULTIMAS CONSULTA JPQL BUENISIMAS POR CIERTO
+  @Query("SELECT p.firstName FROM Person p")
+  public List<String> findAllNames();
+
+  @Query("SELECT distinct(p.firstName) FROM Person p")
+  public List<String> findAllNameDistinct();
+
+  @Query("SELECT count(distinct(p.firstName)) FROM Person p")
+  public Long findAllNameDistinctCount();
 }
 
