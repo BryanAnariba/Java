@@ -3,6 +3,7 @@ package com.hibernate.jpa.concepts.entities;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,70 +14,74 @@ import jakarta.persistence.Table;
 @Table(name = "persons")
 public class Person {
 
-  @Id()
-  @GeneratedValue(strategy = GenerationType.UUID)
-  @UuidGenerator()
-  private String id;
+    @Id()
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator()
+    private String id;
 
-  @Column(name = "first_name", length = 150, nullable = false)
-  private String firstName;
+    @Column(name = "first_name", length = 150, nullable = false)
+    private String firstName;
 
-  @Column(name = "last_name", length = 150, nullable = false)
-  private String lastName;
+    @Column(name = "last_name", length = 150, nullable = false)
+    private String lastName;
 
-  @Column(name = "programming_language", length = 150, nullable = false)
-  private String programmingLanguage;
+    @Column(name = "programming_language", length = 150, nullable = false)
+    private String programmingLanguage;
 
-  public Person () {}
+    @Embedded()
+    private Audit audit;
 
-  public Person(String firstName, String lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
+    public Person() {
+    }
 
-  public Person(String id, String firstName, String lastName, String programmingLanguage) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.programmingLanguage = programmingLanguage;
-  }
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-  public String getId() {
-    return id;
-  }
+    public Person(String id, String firstName, String lastName, String programmingLanguage) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.programmingLanguage = programmingLanguage;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public String getFirstName() {
-    return firstName;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+    public String getFirstName() {
+        return firstName;
+    }
 
-  public String getLastName() {
-    return lastName;
-  }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+    public String getLastName() {
+        return lastName;
+    }
 
-  public String getProgrammingLanguage() {
-    return programmingLanguage;
-  }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-  public void setProgrammingLanguage(String programmingLanguage) {
-    this.programmingLanguage = programmingLanguage;
-  }
+    public String getProgrammingLanguage() {
+        return programmingLanguage;
+    }
 
-  @Override
-  public String toString() {
-    return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", programmingLanguage="
-        + programmingLanguage + "]";
-  }
-  
+    public void setProgrammingLanguage(String programmingLanguage) {
+        this.programmingLanguage = programmingLanguage;
+    }
+
+    @Override
+    public String toString() {
+        return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", programmingLanguage="
+                + programmingLanguage + ", createdAt=" + this.audit.getCreatedAt() + ", updatedAt=" + this.audit.getUpdatedAt() + "]";
+    }
+
 }
