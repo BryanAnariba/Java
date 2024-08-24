@@ -20,7 +20,7 @@ public class ProductServiceImpl implements IProductService {
   @Override
   @Transactional(readOnly = true)
   public List<Product> findAll() {
-    return (List<Product>)this.productRepository.findAll();
+    return (List<Product>) this.productRepository.findAll();
   }
 
   @Override
@@ -37,12 +37,33 @@ public class ProductServiceImpl implements IProductService {
 
   @Override
   @Transactional()
+  public Optional<Product> update(UUID product_id, Product product) {
+    Optional<Product> existProduct = this.productRepository.findById(product_id);
+    if (existProduct.isPresent()) {
+      Product p = existProduct.orElseThrow();
+      p.setSku(product.getSku());
+      p.setName(product.getName());
+      p.setDescription(product.getDescription());
+      p.setPrice(product.getPrice());
+      return Optional.of(this.productRepository.save(p));
+    };
+    return existProduct;
+  }
+
+  @Override
+  @Transactional()
   public Optional<Product> delete(UUID product_id) {
     Optional<Product> existsProduct = this.productRepository.findById(product_id);
     existsProduct.ifPresent(prod -> {
       this.productRepository.delete(prod);
     });
     return existsProduct;
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public boolean existsBySku(String sku) {
+    return this.productRepository.existsBySku(sku);
   }
 
 }
