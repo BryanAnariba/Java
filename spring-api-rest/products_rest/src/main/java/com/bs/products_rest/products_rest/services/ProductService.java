@@ -19,8 +19,8 @@ public class ProductService {
     return (List<Product>) this.productRepository.findAll();
   }
   
-  public void create(Product product) {
-    this.productRepository.save(product);
+  public Product create(Product product) {
+    return this.productRepository.save(product);
   }
   
   public Product getOne(UUID product_id) {
