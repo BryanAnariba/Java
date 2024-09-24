@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository()
 public interface PostRepository extends JpaRepository<Post, UUID>{
   Page<Post> findPublicationById(UUID publication_id, Pageable pageable);
-  Optional<Post> findByAndPublicationId(UUID post_id, UUID publication_id);
+  Optional<Post> findByIdAndPublicationId(UUID post_id, UUID publication_id);
 }

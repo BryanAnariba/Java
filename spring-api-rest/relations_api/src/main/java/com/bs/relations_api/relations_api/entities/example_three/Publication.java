@@ -9,6 +9,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.UUID;
 
 @Entity()
 @Table(name = "publications")
@@ -16,7 +17,7 @@ public class Publication extends AuditModel {
   
   @Id()
   @GeneratedValue(strategy = GenerationType.UUID)
-  private String id;
+  private UUID id;
     
   @Column(length = 150, nullable = false)
   @NotNull()
@@ -33,11 +34,11 @@ public class Publication extends AuditModel {
   @Lob()
   private String content;
   
-  public String getId() {
+  public UUID getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 

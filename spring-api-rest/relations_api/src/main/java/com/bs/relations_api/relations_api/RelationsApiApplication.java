@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class RelationsApiApplication {
 	public static void main(String[] args) {
     
-    // 02:50 
+    // 03: 05
 		SpringApplication.run(RelationsApiApplication.class, args);
     
 	}
