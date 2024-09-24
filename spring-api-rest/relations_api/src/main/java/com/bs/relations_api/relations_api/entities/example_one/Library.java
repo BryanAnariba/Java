@@ -1,4 +1,4 @@
-package com.bs.relations_api.relations_api.entities;
+package com.bs.relations_api.relations_api.entities.example_one;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

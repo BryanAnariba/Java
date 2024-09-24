@@ -1,4 +1,4 @@
-package com.bs.relations_api.relations_api.entities;
+package com.bs.relations_api.relations_api.entities.example_one;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;

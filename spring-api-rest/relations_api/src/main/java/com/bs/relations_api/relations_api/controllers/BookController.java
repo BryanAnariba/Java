@@ -1,7 +1,7 @@
 package com.bs.relations_api.relations_api.controllers;
 
-import com.bs.relations_api.relations_api.entities.Book;
-import com.bs.relations_api.relations_api.entities.Library;
+import com.bs.relations_api.relations_api.entities.example_one.Book;
+import com.bs.relations_api.relations_api.entities.example_one.Library;
 import com.bs.relations_api.relations_api.repository.BookRepository;
 import com.bs.relations_api.relations_api.repository.LibraryRepository;
 import jakarta.validation.Valid;
