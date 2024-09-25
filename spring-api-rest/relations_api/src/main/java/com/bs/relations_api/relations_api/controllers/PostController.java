@@ -29,13 +29,13 @@ public class PostController {
   @Autowired()
   private PublicationRepository publicationRepository;
   
-  @GetMapping("/publications/{publication_id}/get-posts")
-  public Page<Post> getPostsByPublication (@PathVariable(value = "publication_id") UUID publication_id, Pageable pageable ) {
+  @GetMapping("/publications/{publication_id}")
+  public Page<Post> getPostsByPublication (@PathVariable UUID publication_id, Pageable pageable ) {
     return postRepository.findPublicationById(publication_id, pageable);
   }
   
-  @PostMapping("/publications/{publication_id}/create-posts")
-  public Post savePost (@PathVariable(value = "publication_id") UUID publication_id, @Valid @RequestBody Post post) {
+  @PostMapping("/publications/create-post/{publication_id}")
+  public Post savePost (@PathVariable UUID publication_id, @Valid @RequestBody Post post) {
     return this.publicationRepository
       .findById(publication_id)
       .map(publication -> {
@@ -46,7 +46,7 @@ public class PostController {
   }
   
   @PutMapping("/publications/{publication_id}/posts/{post_id}")
-  public Post updatePost (@PathVariable(value = "publication_id") UUID publication_id, @PathVariable(value = "post_id") UUID post_id, @Valid @RequestBody Post post) {
+  public Post updatePost (@PathVariable UUID publication_id, @PathVariable UUID post_id, @Valid @RequestBody Post post) {
     if (!this.publicationRepository.existsById(publication_id)) {
       throw new ResourceNotFoundExceptions("Publication " + publication_id + " not found");
     }
@@ -61,7 +61,7 @@ public class PostController {
   }
   
   @DeleteMapping("/publications/{publication_id}/posts/{post_id}")
-  public ResponseEntity<?> deletePost (@PathVariable(value = "publication_id") UUID publication_id, @PathVariable(value = "post_id") UUID post_id) {
+  public ResponseEntity<?> deletePost (@PathVariable UUID publication_id, @PathVariable UUID post_id) {
     return this.postRepository
       .findByIdAndPublicationId(post_id, publication_id)
       .map(post -> {

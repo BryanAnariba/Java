@@ -4,7 +4,6 @@ import com.bs.relations_api.relations_api.repository.PublicationRepository;
 import com.bs.relations_api.relations_api.entities.example_three.Publication;
 import com.bs.relations_api.relations_api.exceptions.ResourceNotFoundExceptions;
 import jakarta.validation.Valid;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
