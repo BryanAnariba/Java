@@ -1,6 +1,6 @@
 package com.bscompany.corejava;
 
-class Calculator {
+class Calculators {
     public int add (int numberOne, int numberTwo) {
         return numberOne + numberTwo;
     }
@@ -12,6 +12,6 @@ class Calculator {
 
 public class Classes {
     public static void main(String[] args) {
-        Calculator c = new Calculator();
+        Calculators c = new Calculators();
     }
 }
