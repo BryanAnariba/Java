@@ -9,7 +9,14 @@
     <body>
         <h1 th:text="${title}"></h1>
         <p>
-            Welcome: <strong th:text="${first_name}"></strong> <strong th:text="${last_name}"></strong></p>
+            Welcome: 
+            <strong th:text="${user.first_name}"></strong> 
+            <strong th:text="${user.last_name}"></strong>
+            <br/>
+            Email:
+            <strong th:text="${user.email}"></strong>
+            <strong th:if="${not (user.email != null)}" th:text="${'Email Not Found'}"></strong>
+        </p>
         <p>
             Details Page Works!
         </p>

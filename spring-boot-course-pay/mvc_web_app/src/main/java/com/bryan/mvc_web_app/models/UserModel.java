@@ -6,6 +6,7 @@ public class UserModel {
     private String first_name;
     private String last_name;
     private int age;
+    private String email;
 
     public Integer getId() {
         return id;
@@ -39,13 +40,29 @@ public class UserModel {
         this.age = age;
     }
 
-    public UserModel(int id, String first_name, String last_name, int age) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public UserModel(int id, String first_name, String last_name, int age, String email) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.email = email;
+    }
+
+    public UserModel(Integer id, String first_name, String last_name, int age) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.age = age;
     }
-
+    
     public UserModel() {
     }
 
