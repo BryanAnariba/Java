@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MvcWebAppApplication {
 
-    // Ver a partir del video 25
+    // Ver a partir del video 35
     public static void main(String[] args) {
         SpringApplication.run(MvcWebAppApplication.class, args);
     }
