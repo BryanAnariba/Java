@@ -1,0 +1,8 @@
+La carpeta target debe estar vacia
+	Empaqueta y lo pone en la carpeta de maven en el group id que le dimos: ./mvnw install
+
+Pero
+
+	Este es el que ocupamos para generar un proyecto de spring: ./mvnw clean package
+	Ir a cd target/
+	Ejecutar el jar con: java -jar ./nombre_archivo.jar

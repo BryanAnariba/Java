@@ -4,9 +4,12 @@ import com.bryan.mvc_web_app.models.UserModel;
 import com.bryan.mvc_web_app.models.dtos.PaginationDto;
 import com.bryan.mvc_web_app.models.dtos.ParamDto;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping("/api/request-params")
-public class RequestParamsController {
+public class RequestParamsRestController {
     
     // Accediendo a application.properties file
     @Value("${config.code}")
@@ -31,8 +34,17 @@ public class RequestParamsController {
     private String message;
     
     @Value("${config.listOfValues}")
-    private String[] listOfValues;
+    private List<String> listOfValues;
     
+    @Value("#{${config.valuesMap}}")
+    private Map<String, Object> valuesMap;
+    
+    @Value("#{${config.valuesMap}.product}")
+    private String product;
+    
+    // Otra forma de llamar valores del application.properties
+    @Autowired
+    private Environment environment;
     
     /* 
         http://localhost:3500/api/request-params/user-message?message=hi!
@@ -93,6 +105,9 @@ public class RequestParamsController {
         values.put("username", this.username);
         values.put("message", this.message);
         values.put("listOfValues", this.listOfValues);
+        values.put("valuesMap", this.valuesMap);
+        values.put("product", this.product);
+        values.put("product_name", this.environment.getProperty("config.message"));
         return ResponseEntity.ok(values);
     }
     
